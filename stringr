@@ -9,9 +9,7 @@ storm$All.comments<-str_c(storm$Comments,
 storm<-select(storm, Event.ID, Database,
               Date.Time, State, All.comments)
 print(sapply(storm, class))
-
 -----------------------------------------------------------------------------------------------------------------------------
-
 expr<-"[fF]lash flood(\\w+)?"
 storm$flash_flood_TF<-str_detect(storm$All.comments, expr)
 
@@ -24,9 +22,7 @@ ggplot(v, aes(yy, weight=Freq)) +
   theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5)) +
   xlab("Year") +
   ylab("number of flash floods")
-  
 -----------------------------------------------------------------------------------------------------------------------------
-  
 storm<-mutate(storm, wind_speed=str_extract(storm$All.comments,
                                             "([0-9]{1,3})\\s*(knots|km/h|kts|kt)"))
 for (i in 1:nrow(storm)){
